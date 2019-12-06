@@ -4,16 +4,26 @@
   "description": "Role-based authentication for Sapper",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_PATH=lib:test mocha --require esm {lib,test}/**/*.spec.js",
     "lint": "eslint lib"
   },
   "author": "Antony Jones",
   "license": "MIT",
   "eslintConfig": {
-    "extends": "@beyonk"
+    "extends": "@beyonk",
+    "globals": {
+      "describe": "readonly",
+      "afterEach": "readonly",
+      "it": "readonly",
+      "context": "readonly"
+    }
   },
   "devDependencies": {
     "@beyonk/eslint-config": "^4.0.1",
-    "eslint": "^6.7.2"
+    "@hapi/code": "^7.0.0",
+    "eslint": "^6.7.2",
+    "esm": "^3.2.25",
+    "mocha": "^6.2.2",
+    "sinon": "^7.5.0"
   }
 }

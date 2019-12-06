@@ -4,10 +4,17 @@
 
 # RBAC for Sapper
 
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com) [![Svelte v3](https://img.shields.io/badge/svelte-v3-blueviolet.svg)](https://svelte.dev)
-
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com) [![build-status](https://img.shields.io/github/workflow/status/beyonk-adventures/sapper-rbac/publish)](https://github.com/beyonk-adventures/sapper-rbac/) [![Svelte v3](https://img.shields.io/badge/svelte-v3-blueviolet.svg)](https://svelte.dev)
 
 Role-based access control for Sapper. Works on both the server-, and, client-side.
+
+# Install
+
+Install as a dev dependency:
+
+```bash
+npm install --save-dev @beyonk/sapper-rbac
+```
 
 # Usage
 
@@ -74,6 +81,18 @@ function sessionMiddleware (req, res, next) {
 ### deny
 
 For cases where the user is denied access, call this function.
+
+The deny function receives two parameters:
+
+```js
+deny (path, scope) {
+  // path: /some/path - the path the user attempted to access
+  // scope: {
+  //  given: [ 'sales.view', 'booking.create' ] - the scopes the user has
+  //  required: [ 'admin.view' ] - the scopes the user required
+  // }
+}
+```
 
 ### grant
 
